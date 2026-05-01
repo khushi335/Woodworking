@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- CONTACT PAGE BANNER -->
+<section class="sub-banner contact-services-banner">
+    <style>
+        .contact-services-banner {
+            height: 50vh;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: #000;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* The background image layer */
+        .banner-bg-wrapper {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .banner-bg-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.6); /* Ensures text contrast */
+        }
+
+        /* Glass-morphism content plate */
+        .banner-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .banner-glass-card {
+            max-width: 550px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 50px;
+            border-left: 4px solid #D4AF37;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .banner-glass-card span {
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .banner-glass-card h1 {
+            color: #ffffff;
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 0 0 20px 0;
+            letter-spacing: -1px;
+        }
+
+        .banner-glass-card p {
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        /* Smooth Entry Animation */
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .contact-services-banner { height: 40vh; }
+            .banner-glass-card { 
+                padding: 30px; 
+                margin: 0 10px;
+                text-align: center;
+                border-left: none;
+                border-bottom: 4px solid #D4AF37;
+            }
+            .banner-glass-card h1 { font-size: 2.5rem; }
+        }
+    </style>
+
+    <div class="banner-bg-wrapper">
+        <!-- Static image kept in HTML as requested -->
+        <img src="{% static 'img/hero.png' %}" alt="Luxury Woodworking Services in Lakeway">
+    </div>
+
+    <div class="banner-container">
+        <div class="banner-glass-card">
+            <span>Precision & Artistry</span>
+            <h1>Our Services</h1>
+            <p>From full-scale kitchen transformations to custom architectural millwork, we bring master-level craftsmanship to every Lakeway home.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact-page">
+    <div class="container">
+        <!-- Header Section -->
+        <div class="contact-header">
+            <span class="wood-eyebrow">Expert Craftsmanship</span>
+            <h1>Get in Touch with Our <span class="text-oak">Master Builders</span></h1>
+            <p>Ready to start your custom project? Fill out the form below or reach out directly to our North Jersey workshop.</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Contact Information Card -->
+            <div class="contact-info-card">
+                <div class="info-block">
+                    <h3>Our Workshop</h3>
+                    <p>123 Artisan Lane, North Jersey, NJ 07001</p>
+                </div>
+                
+                <div class="info-block">
+                    <h3>Contact Details</h3>
+                    <p><strong>Phone:</strong> (555) 123-4567</p>
+                    <p><strong>Email:</strong> projects@jandrwoodworking.com</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>Business Hours</h3>
+                    <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                    <p>Sat: By Appointment Only</p>
+                </div>
+
+                <div class="social-box">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Modern Inquiry Form -->
+            <div class="contact-form-wrapper">
+                <form action="#" method="POST" class="wood-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Project Type</label>
+                        <select id="subject" name="subject">
+                            <option value="kitchen">Kitchen Island</option>
+                            <option value="office">Home Office</option>
+                            <option value="entertainment">Entertainment Center</option>
+                            <option value="bathroom">Bathroom Vanity</option>
+                            <option value="other">Other Custom Woodwork</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Vision</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Describe your project requirements..."></textarea>
+                    </div>
+
+                    <button type="submit" class="wood-submit-btn">
+                        Submit Inquiry <span>&rarr;</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

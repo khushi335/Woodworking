@@ -1,0 +1,447 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- SERVICE PAGE BANNER -->
+<section class="page-banner service-hero">
+    <style>
+        /* Banner Container */
+        .page-banner {
+            height: 50vh;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #0d0d0d; /* Fallback */
+        }
+
+        /* The Background Image */
+        .banner-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+            filter: brightness(0.5) contrast(1.1); /* Ensures text pop */
+        }
+
+        /* Cinematic Gradient Overlay */
+        .banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, 
+                rgba(0,0,0,0.2) 0%, 
+                rgba(0,0,0,0.6) 100%);
+            z-index: 2;
+        }
+
+        /* Glass-morphism Content Box */
+        .banner-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 40px 60px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 2px;
+            animation: bannerFadeIn 1.2s ease-out;
+        }
+
+        /* Text Styling */
+        .banner-tagline {
+            display: block;
+            color: #D4AF37;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .banner-title {
+            color: #ffffff;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        /* Decorative Gold Underline */
+        .banner-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #D4AF37;
+            margin: 25px auto 0;
+        }
+
+        /* Subtle Animation */
+        @keyframes bannerFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 768px) {
+            .page-banner { height: 40vh; }
+            .banner-content { padding: 30px 20px; width: 90%; }
+            .banner-title { font-size: 2.5rem; }
+        }
+    </style>
+
+    <!-- Background Image - Linked to your static folder -->
+    <img src="{% static 'img/hero.png' %}" alt="Our Premium Woodworking Services" class="banner-bg-img">
+    
+    <!-- Darkening Overlay -->
+    <div class="banner-overlay"></div>
+
+    <!-- Center Content -->
+    <div class="banner-content">
+        <span class="banner-tagline">Excellence in Craft</span>
+        <h1 class="banner-title">Our Services</h1>
+    </div>
+</section>
+
+<!-- SECTION: THE LOOKBOOK (Gallery) -->
+<section id="lookbook" class="lookbook-section">
+    <div class="container">
+        
+        <div class="lookbook-header">
+            <div class="lb-title-group">
+                <span class="pre-title">Handcrafted Excellence</span>
+                <h2 class="lb-main-title">Artistry in <span class="text-gold">Timber.</span></h2>
+            </div>
+            <p class="lb-lead">A curation of our most ambitious architectural woodwork and bespoke cabinetry installations.</p>
+        </div>
+
+        <div class="lb-grid">
+            <!-- Main Featured Piece -->
+            <div class="lb-card lb-featured">
+                <div class="lb-image-wrapper">
+                    <img src="{% static 'img/luxury-kitchen-cabinets-with-marble-countertop.png' %}" alt="Modern Luxury Kitchen Cabinets" class="lb-img">
+                    <div class="lb-overlay">
+                        <div class="lb-content">
+                            <span class="lb-tag">Kitchens</span>
+                            <h3>The Lakeway Manor</h3>
+                            <p>Hand-selected white oak with integrated touch-to-open technology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supporting Piece 1 -->
+            <div class="lb-card">
+                <div class="lb-image-wrapper">
+                    <img src="{% static 'img/minimalist-armchairs.png' %}" alt="Bespoke Minimalist Furniture" class="lb-img">
+                    <div class="lb-overlay">
+                        <div class="lb-content">
+                            <span class="lb-tag">Living</span>
+                            <h3>Minimalist Media Suite</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Supporting Piece 2 -->
+            <div class="lb-card">
+                <div class="lb-image-wrapper">
+                    <img src="{% static 'img/walk in closet.png' %}" alt="Custom Walk-in Closet Design" class="lb-img">
+                    <div class="lb-overlay">
+                        <div class="lb-content">
+                            <span class="lb-tag">Storage</span>
+                            <h3>The Boutique Closet</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SECTION: SPECIALIZED SERVICES (Icon Grid) -->
+<section id="specialized-services" class="icon-service-block">
+    <div class="container">
+        
+        <div class="service-intro">
+            <h4>Designing and building custom woodwork since 1971, specializing in:</h4>
+            <div class="gold-accent-line"></div>
+        </div>
+
+        <div class="service-icon-grid">
+            <!-- 01 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/45b980ec79be1bd4e5ef0d1d0dcabade8a38f767/movie-cinema.png" alt="Media Centers">
+                </div>
+                <h6>Media Entertainment Centers</h6>
+            </div>
+
+            <!-- 02 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/742ad03d2244965d53f2d55c11d2843054d31c76/bedroom.png" alt="Bedroom Built-Ins">
+                </div>
+                <h6>Bedroom Built-Ins</h6>
+            </div>
+
+            <!-- 03 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/5379190d45aec1b43a1c711be770b20c08fd6251/dinner-table.png" alt="Custom Tables">
+                </div>
+                <h6>Custom Tables</h6>
+            </div>
+
+            <!-- 04 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/b224c195c40859e3b66c929877f27463cc909b13/bathroom.png" alt="Bathroom Vanities">
+                </div>
+                <h6>Custom Bathroom Vanities</h6>
+            </div>
+
+            <!-- 05 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/c3508a5aa0a0d8754d8c2f17dcb80cf49be51610/fireplace.png" alt="Fireplace Mantels">
+                </div>
+                <h6>Custom Fireplace Mantels</h6>
+            </div>
+
+            <!-- 06 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/0a84ad50f23bdf56211eb37d80a45f7e2570e4a2/dinner.png" alt="Wall Units">
+                </div>
+                <h6>Custom Dining Room Wall Units & Buffets</h6>
+            </div>
+
+            <!-- 07 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/a20a81f2750d194a159209b293a3a349fe032caa/wardrobe.png" alt="Mudrooms">
+                </div>
+                <h6>Custom Mudrooms</h6>
+            </div>
+
+            <!-- 08 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/5528ea9da9118e11ee15bc8c6a5a4310a5365f36/libraries.png" alt="Libraries">
+                </div>
+                <h6>Libraries</h6>
+            </div>
+
+            <!-- 09 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/29a182b4bc33cf4e8de824658ef7be15a19fcc91/home-theater.png" alt="Home Theaters">
+                </div>
+                <h6>Custom Cabinets for Home Theaters</h6>
+            </div>
+
+            <!-- 10 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/3ba234787762f7fd09280308cee7b9cba60da154/workspace.png" alt="Residential Office">
+                </div>
+                <h6>Residential Home Offices</h6>
+            </div>
+
+            <!-- 11 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/46ac1fdcea31546d4a1fa7dba48eddddacc883bd/buildings.png" alt="Commercial Offices">
+                </div>
+                <h6>Commercial Offices</h6>
+            </div>
+
+            <!-- 12 -->
+            <div class="service-card">
+                <div class="icon-box">
+                    <img src="//cdndata.co/cdn/a96d1f87838b0f5974d7c083a5deb5b28037717c/timber.png" alt="Wood & Laminate">
+                </div>
+                <h6>Custom Wood & Laminate</h6>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION: THE PROCESS (How We Work) -->
+<section id="process" class="process-section">
+    <div class="container">
+        <header class="process-header">
+            <span class="process-badge">The DS Method</span>
+            <h2 class="process-title">From Concept to <span class="accent-gold">Installation.</span></h2>
+            <p class="process-subtitle">A seamless four-step journey to the custom woodwork of your dreams.</p>
+        </header>
+
+        <div class="process-grid">
+            <!-- Step 1 -->
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <div class="step-icon"><i class="fas fa-pencil-ruler"></i></div>
+                <h3 class="step-title">Consultation & Design</h3>
+                <p class="step-desc">We begin with a deep dive into your vision, taking precise measurements and creating detailed 3D renderings of your space.</p>
+                <div class="step-line"></div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <div class="step-icon"><i class="fas fa-tree"></i></div>
+                <h3 class="step-title">Material Selection</h3>
+                <p class="step-desc">Choose from premium, sustainably sourced hardwoods and high-performance finishes tailored to the Austin climate.</p>
+                <div class="step-line"></div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <div class="step-icon"><i class="fas fa-tools"></i></div>
+                <h3 class="step-title">Precision Fabrication</h3>
+                <p class="step-desc">Our master craftsmen combine traditional joinery techniques with modern technology to build your project to 1mm accuracy.</p>
+                <div class="step-line"></div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-step active">
+                <div class="step-number">04</div>
+                <div class="step-icon"><i class="fas fa-truck-loading"></i></div>
+                <h3 class="step-title">White-Glove Delivery</h3>
+                <p class="step-desc">Our expert installation team ensures a perfect fit, leaving your home spotless and your new cabinetry ready for use.</p>
+                <div class="step-line"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- SECTION: WHY CHOOSE US (The Standard) -->
+<section id="why-choose-us" class="excellence-section">
+    <div class="container">
+        
+        <div class="excellence-header">
+            <span class="pre-title">The Artisan Difference</span>
+            <h2 class="excellence-title">Why Professionals Choose <span class="text-gold">Our Timber.</span></h2>
+            <div class="header-line"></div>
+        </div>
+
+        <div class="excellence-grid">
+            <!-- Reason 1 -->
+            <div class="excellence-card">
+                <div class="card-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <div class="card-body">
+                    <h3>Elite Material Sourcing</h3>
+                    <p>We don't just buy wood; we hand-select every slab. From moisture content to grain pattern, only the top 5% of timber makes it into our shop.</p>
+                </div>
+                <div class="card-number">01</div>
+            </div>
+
+            <!-- Reason 2 -->
+            <div class="excellence-card active">
+                <div class="card-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="card-body">
+                    <h3>Master-Level Joinery</h3>
+                    <p>Old-world techniques meet modern precision. Our joinery is designed to withstand generations, featuring reinforced mortise and tenons.</p>
+                </div>
+                <div class="card-number">02</div>
+            </div>
+
+            <!-- Reason 3 -->
+            <div class="excellence-card">
+                <div class="card-icon">
+                    <i class="fas fa-drafting-compass"></i>
+                </div>
+                <div class="card-body">
+                    <h3>Bespoke Engineering</h3>
+                    <p>Every project starts with a detailed 3D consultation. We tailor the dimensions and ergonomics specifically to your lifestyle and space.</p>
+                </div>
+                <div class="card-number">03</div>
+            </div>
+
+            <!-- Reason 4 -->
+            <div class="excellence-card">
+                <div class="card-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="card-body">
+                    <h3>Lifetime Durability</h3>
+                    <p>Our signature 7-layer finishing process ensures your piece is resistant to moisture, heat, and daily wear while maintaining a silk-touch feel.</p>
+                </div>
+                <div class="card-number">04</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SECTION: THE SHOWROOM (Architectural Details) -->
+<section id="showroom" class="showroom-section">
+    <div class="container">
+        
+        <!-- FEATURE 01: MATERIALS -->
+        <div class="showroom-row">
+            <div class="showroom-visual" data-aos="fade-right">
+                <div class="main-frame">
+                    <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop" alt="Raw Timber Detail" class="sr-img">
+                </div>
+                <div class="accent-frame">
+                    <img src="https://images.unsplash.com/photo-1620626011761-9963d7521476?q=80&w=1000&auto=format&fit=crop" alt="Premium Hardware" class="sr-img-small">
+                </div>
+            </div>
+            <div class="showroom-content">
+                <span class="sr-number">01</span>
+                <h2 class="sr-title">Engineered <br> <span class="outline-text">Integrity.</span></h2>
+                <div class="sr-divider"></div>
+                <p class="sr-text">
+                    We exclusively utilize <strong>High-Performance Materials</strong>. Every joint is reinforced with industrial hardware, and every surface is treated with architectural-grade stains. We don't just build furniture; we engineer legacies.
+                </p>
+                <div class="sr-tag-group">
+                    <span class="sr-tag">Exotic Hardwoods</span>
+                    <span class="sr-tag">Precision Finishes</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- FEATURE 02: ARTISAN (The Dark Interaction) -->
+        <div class="showroom-row reversed">
+            <div class="showroom-visual">
+                <div class="main-frame">
+                    <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=2070&auto=format&fit=crop" alt="Master Craftsman at Work" class="sr-img">
+                    <div class="glass-overlay">
+                        <span class="overlay-stat">100% Handcrafted</span>
+                    </div>
+                </div>
+            </div>
+            <div class="showroom-content">
+                <span class="sr-number">02</span>
+                <h2 class="sr-title">Artisan <br> <span class="outline-text">DNA.</span></h2>
+                <div class="sr-divider"></div>
+                <p class="sr-text">
+                    In an era of CNC automation, we preserve the soul of the craft. Our <strong>Hand Carving and Wood Turning</strong> are performed by masters who understand the grain's personality. This is the intersection of art and wood.
+                </p>
+                <a href="#contact" class="sr-cta">The Process <i class="fas fa-chevron-right"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}
