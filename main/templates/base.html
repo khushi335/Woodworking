@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Elite Custom Woodworking & Architectural Millwork. Professional craftsmanship, SEO optimized designs.">
-    <title>{% block title %}WoodCraft Elite | Architectural Woodworking Specialists{% endblock %}</title>
+    <title>{% block title %}Life In Pieces | Architectural Woodworking Specialists{% endblock %}</title>
     
     <!-- Premium Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
@@ -20,11 +20,11 @@
     <div class="top-bar">
     <div class="container flex-nav">
         <div class="top-left">
-            <span class="top-info"><i class="fas fa-map-marker-alt"></i> Phoenix, Arizona</span>
-            <span class="top-info hide-mobile"><i class="fas fa-envelope"></i> contact@woodcraftelite.com</span>
+            <span class="top-info"><i class="fas fa-map-marker-alt"></i> Maryland</span>
+            <span class="top-info hide-mobile"><i class="fas fa-envelope"></i> info@lifeinpieces.com</span>
         </div>
         <div class="top-right">
-            <span class="top-info"><i class="fas fa-phone-alt"></i> (555) 987-6543</span>
+            <span class="top-info"><i class="fas fa-phone-alt"></i> 443-228-6769</span>
             <div class="top-socials">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -36,26 +36,35 @@
 
     <!-- SECTION 2: NAVIGATION -->
     <nav class="main-nav">
-        <div class="container flex-nav">
-            <a href="{% url 'index' %}" class="logo">
-                <img src="{% static 'img/logo.png' %}" alt="WoodCraft Elite Logo">
-            </a>
-            <ul class="nav-links">
-                <li><a href="{% url 'index' %}"><b>Home</b></a></li>
-                <li><a href="{% url 'about' %}"><b>About</b></a></li>
-                <li><a href="{% url 'service' %}"><b>Services</b></a></li>
-                <li><a href="{% url 'project' %}"><b>Our Project</b></a></li>
-                <!-- <li><a href="#process"><b>Our Process</b></a></li> -->
-                <li><a href="{% url 'contact' %}"><b>Contact</b></a></li>
-            </ul>
+    <div class="container flex-nav">
 
-            <!-- Main CTA with Direct Call Functionality -->
-            <a href="tel:5559876543" class="cta-nav">
-                <i class="fas fa-phone-alt"></i> 
-                <b>(555) 987-6543</b>
-            </a>
+        <!-- LOGO -->
+        <a href="{% url 'index' %}" class="logo">
+            <img src="{% static 'img/logo_pisces.png' %}" alt="WoodCraft Elite Logo">
+        </a>
+
+        <!-- NAV LINKS -->
+        <ul class="nav-links">
+            <li><a href="{% url 'index' %}"><b>Home</b></a></li>
+            <li><a href="{% url 'about' %}"><b>About</b></a></li>
+            <li><a href="{% url 'service' %}"><b>Services</b></a></li>
+            <li><a href="{% url 'project' %}"><b>Our Project</b></a></li>
+            <li><a href="{% url 'contact' %}"><b>Contact</b></a></li>
+        </ul>
+
+        <!-- ✅ MENU TOGGLE (ADD HERE) -->
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
         </div>
-    </nav>
+
+        <!-- CTA BUTTON -->
+        <a href="tel:5559876543" class="cta-nav">
+            <i class="fas fa-phone-alt"></i> 
+            <b>443-228-6769</b>
+        </a>
+
+    </div>
+</nav>
 
     <main>
         {% block content %}{% endblock %}
@@ -65,7 +74,7 @@
 <footer class="footer">
     <div class="container grid-footer">
         <div class="footer-box brand-col">
-            <h3>WOODCRAFT <span class="text-gold">ELITE</span></h3>
+            <h3>LIFE <span class="text-gold">IN PISCES</span></h3>
             <p>Architectural millwork and bespoke furniture designed for the most discerning clients. Precision in every grain, excellence in every detail.</p>
             <div class="footer-socials">
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -89,11 +98,11 @@
             <h4>Contact Info</h4>
             <div class="contact-item">
                 <i class="fas fa-map-marker-alt"></i>
-                <p>123 Artisan Industrial Blvd,<br>Phoenix, AZ 85001</p>
+                <p>Maryland</p>
             </div>
             <div class="contact-item">
                 <i class="fas fa-phone-alt"></i>
-                <p>(555) 987-6543</p>
+                <p>443-228-6769</p>
             </div>
         </div>
 
@@ -111,10 +120,17 @@
 <!-- SECTION 15: COPYRIGHT BAR -->
 <div class="copyright-bar">
     <div class="container flex-footer">
-        <p>&copy; 2026 <b>WoodCraft Elite</b>. All Rights Reserved.</p>
+        <p>&copy; 2026 <b>Life In Pieces</b>. All Rights Reserved.</p>
         <p>Designed by <a href="https://quantumcoresoftware.com/" class="designer-link"><b>Quantum Core Software</b></a></p>
     </div>
 </div>
+<script>
+const toggle = document.getElementById('menu-toggle');
+const navLinks = document.querySelector('.nav-links');
 
+toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+</script>
 </body>
 </html>
