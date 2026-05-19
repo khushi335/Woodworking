@@ -27,8 +27,8 @@
             </p>
             
             <div class="hero-cta-group">
-                <a href="#gallery" class="btn-main">View Showcase <i class="fas fa-arrow-right"></i></a>
-                <a href="#contact" class="btn-ghost">Book Consultation</a>
+                <a href="{% url 'project' %}" class="btn-main">View Showcase <i class="fas fa-arrow-right"></i></a>
+                <a href="{% url 'contact' %}" class="btn-ghost">Book Consultation</a>
             </div>
         </div>
         
@@ -99,7 +99,7 @@
             </div>
 
             <footer class="about-actions">
-                <a href="#contact" class="btn-primary">Start Your Project</a>
+                <a href="{% url 'contact' %}" class="btn-primary">Start Your Project</a>
                 <div class="trust-pill">
                     <i class="fas fa-check-circle"></i>
                     <span>Trusted by Maryland Designers</span>
@@ -344,7 +344,7 @@
                 <p class="sr-text">
                     In an era of CNC automation, we preserve the soul of the craft. Our <strong>Hand Carving and Wood Turning</strong> are performed by masters who understand the grain's personality. This is the intersection of art and wood.
                 </p>
-                <a href="#contact" class="sr-cta">The Process <i class="fas fa-chevron-right"></i></a>
+                <a href="{% url 'contact' %}" class="sr-cta">The Process <i class="fas fa-chevron-right"></i></a>
             </div>
         </div>
 
@@ -717,36 +717,45 @@
 
             <!-- Column 2: The Inquiry Form -->
             <div class="contact-form-panel">
-                <form id="premium-inquiry-form">
+                {% if messages %}
+                    <div class="messages-container" style="margin: 20px 0;">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" style="padding: 15px; border-radius: 4px; margin-bottom: 10px; {% if message.tags == 'success' %}background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;{% else %}background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;{% endif %}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <form id="premium-inquiry-form" method="POST" action="">
+                    {% csrf_token %}
+        
                     <div class="form-row">
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" placeholder="John Doe" required>
+                            <input type="text" name="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label>Email Address</label>
-                            <input type="email" placeholder="john@example.com" required>
+                            <input type="email" name="email" placeholder="john@example.com" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label>Project Interest</label>
-                        <select>
-                            <option>Custom Kitchen Island</option>
-                            <option>Home Office Suite</option>
-                            <option>Entertainment Center</option>
-                            <option>Other Architectural Millwork</option>
+                        <select name="project_interest">
+                            <option value="Custom Kitchen Island">Custom Kitchen Island</option>
+                            <option value="Home Office Suite">Home Office Suite</option>
+                            <option value="Entertainment Center">Entertainment Center</option>
+                            <option value="Other Architectural Millwork">Other Architectural Millwork</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea rows="5" placeholder="Tell us about your project goals..."></textarea>
+                        <textarea name="message" rows="5" placeholder="Tell us about your project goals..." required></textarea>
                     </div>
 
-                    <button type="submit" class="btn-gold-submit">
-                        Send Inquiry <span><i class="fas fa-paper-plane"></i></span>
-                    </button>
+                    <button type="submit" name="contact_submit" class="btn-gold-submit">Send Inquiry <span><i class="fas fa-paper-plane"></i></span></button>
                 </form>
             </div>
 
